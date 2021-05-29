@@ -1,10 +1,10 @@
-let XMLHttpRequest = require('XMLHttpRequest').XMLHttpRequest;
+let XMLHttpRequest = require('xmlhttpRequest').XMLHttpRequest;
 function makePromiseCall(methodType, url, async = true, data = null) {
     return new Promise(function (resolve, reject) {
         let xhr = new XMLHttpRequest();
         xhr.onreadystatechange= function(){
-        console.log("State Changed Called. Ready State: "+
-                    xhr.readyState+" Status:"+xhr.status);
+            console.log("State Changed Called. Ready State: "+
+                        xhr.readyState+" Status:"+xhr.status);
         if (xhr.status.toString().match('^[2][0-9]{2}$')) {
             resolve(xhr.responseText);
         }
@@ -30,7 +30,7 @@ function makePromiseCall(methodType, url, async = true, data = null) {
 const getURL = "http://127.0.0.1:3000/employees/1";
 makePromiseCall("GET", getURL, true)
     .then(responseText => {
-        console.log("Get User Data: "+data)
+        console.log("Get User Data: "+responseText)
     })
     .catch(error => console.log("GET Error Status: "+
                             JSON.stringify(error)));
